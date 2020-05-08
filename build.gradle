@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+String packagePath = 'net.frankheijden.insights.addons.bentobox'
+group = packagePath
+version = '1.0.0'
+description = 'InsightsBentoBoxAddon'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://papermc.io/repo/repository/maven-public/' }
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://repo.codemc.org/repository/maven-public/' }
+}
+
+dependencies {
+    compileOnly 'com.github.FrankHeijden:Insights:feature~cache-SNAPSHOT'
+    compileOnly 'com.destroystokyo.paper:paper-api:1.15.2-R0.1-SNAPSHOT'
+    compileOnly 'world.bentobox:bentobox:1.14.0-SNAPSHOT'
+}
