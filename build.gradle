@@ -4,8 +4,8 @@ plugins {
 
 String packagePath = 'net.frankheijden.insights.addons.bentobox'
 group = packagePath
-version = '1.0.0'
-description = 'InsightsBentoBoxAddon'
+version = '1.1.0'
+description = 'BentoBoxAddon'
 sourceCompatibility = '1.8'
 
 repositories {
@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'com.github.FrankHeijden:Insights:feature~cache-SNAPSHOT'
-    compileOnly 'com.destroystokyo.paper:paper-api:1.15.2-R0.1-SNAPSHOT'
-    compileOnly 'world.bentobox:bentobox:1.14.0-SNAPSHOT'
+    compileOnly 'com.github.FrankHeijden:Insights:1a81653312'
+    compileOnly 'com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT'
+    compileOnly 'world.bentobox:bentobox:1.15.4-SNAPSHOT'
 }
