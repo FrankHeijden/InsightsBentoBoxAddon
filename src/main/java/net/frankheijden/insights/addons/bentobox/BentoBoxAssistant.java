@@ -4,6 +4,7 @@ import net.frankheijden.insights.entities.Area;
 import net.frankheijden.insights.entities.CacheAssistant;
 import net.frankheijden.insights.entities.CuboidSelection;
 import org.bukkit.Location;
+import org.bukkit.World;
 import world.bentobox.bentobox.BentoBox;
 import world.bentobox.bentobox.database.objects.Island;
 import world.bentobox.bentobox.managers.IslandsManager;
@@ -18,21 +19,21 @@ public class BentoBoxAssistant extends CacheAssistant {
      * There needs to be a constructor without parameters.
      */
     public BentoBoxAssistant() {
-        super("BentoBox", "BentoBox", "island", "v1.1.0");
+        super("BentoBox", "BentoBox", "island", "1.1.1");
     }
 
-    public String getId(Island is) {
-        return getPluginName() + "@" + is.getUniqueId();
+    public String getId(Island is, World world) {
+        return getPluginName() + "@" + is.getUniqueId() + "-" + world.getName();
     }
 
-    public Area adapt(Island is) {
-        return Area.from(this, getId(is), Collections.singletonList(new CuboidSelection(is.getWorld(), is.getProtectionBoundingBox())));
+    public Area adapt(Island is, World world) {
+        return Area.from(this, getId(is, world), Collections.singletonList(new CuboidSelection(is.getWorld(), is.getProtectionBoundingBox())));
     }
 
     @Override
     public Area getArea(Location location) {
         return manager.getIslandAt(location)
-                .map(this::adapt)
+                .map(is -> adapt(is, location.getWorld()))
                 .orElse(null);
     }
 }
