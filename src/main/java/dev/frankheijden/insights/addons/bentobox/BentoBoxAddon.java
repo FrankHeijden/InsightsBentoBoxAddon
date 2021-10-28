@@ -25,7 +25,7 @@ public class BentoBoxAddon implements InsightsAddon {
         return new SimpleCuboidRegion(
                 world,
                 new Vector3((int) box.getMinX(), (int) box.getMinY(), (int) box.getMinZ()),
-                new Vector3((int) box.getMaxX(), (int) box.getMaxY(), (int) box.getMaxZ()),
+                new Vector3((int) box.getMaxX(), (int) box.getMaxY() - 1, (int) box.getMaxZ()),
                 getPluginName(),
                 getId(is, world)
         );
