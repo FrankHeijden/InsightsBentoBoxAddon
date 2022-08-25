@@ -24,8 +24,16 @@ public class BentoBoxAddon implements InsightsAddon {
         BoundingBox box = is.getProtectionBoundingBox();
         return new SimpleCuboidRegion(
                 world,
-                new Vector3((int) box.getMinX(), (int) box.getMinY(), (int) box.getMinZ()),
-                new Vector3((int) box.getMaxX(), (int) box.getMaxY() - 1, (int) box.getMaxZ()),
+                new Vector3(
+                        (int) box.getMinX(),
+                        (int) Math.max(box.getMinY(), world.getMinHeight()),
+                        (int) box.getMinZ()
+                ),
+                new Vector3(
+                        (int) box.getMaxX(),
+                        (int) Math.min(box.getMaxY(), world.getMaxHeight()) - 1,
+                        (int) box.getMaxZ()
+                ),
                 getPluginName(),
                 getId(is, world)
         );
